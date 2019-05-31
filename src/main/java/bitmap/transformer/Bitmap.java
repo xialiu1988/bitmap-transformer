@@ -82,5 +82,16 @@ return image;
        return src;
    }
 
+   //rotate 90degree
+   public  BufferedImage rotateToRight90degree( BufferedImage img )
+   {
+       BufferedImage newImage = new BufferedImage( img.getHeight(), img.getWidth(), img.getType() );
+
+       for( int i=0 ; i < width ; i++ )
+           for( int j=0 ; j < height ; j++ )
+               newImage.setRGB( height-1-j, i, img.getRGB(i,j) );
+
+       return newImage;
+   }
    }
 
