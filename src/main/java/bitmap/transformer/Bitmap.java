@@ -91,4 +91,27 @@ return image;
         return result;
     }
 
-}
+
+    //blur the image
+   public  BufferedImage blur(BufferedImage src) {
+
+       for(int h = 0; h < height; h++ ){
+           for(int w = 0; w < width; w++){
+               int p = src.getRGB(w,h);
+               int a = (p>>24)&0xff;
+               int r = (p>>16)&0xff;
+               int g = (p>>8)&0xff;
+               int b = p&0xff;
+
+               int random = (int)(Math.random() * 256);
+
+               //replace RGB value with avg
+               p = (255-random << 24) | (255-random << 16) | (255- random << 8) |255-random;
+               src.setRGB(w, h, p);
+           }
+       }
+       return src;
+   }
+
+   }
+
