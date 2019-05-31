@@ -1,6 +1,7 @@
 package bitmap.transformer;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -76,6 +77,18 @@ public class Bitmap {
 return image;
     }
 
+//resize the image
 
+    public  BufferedImage resize(BufferedImage src) {
+
+
+        BufferedImage result = new BufferedImage((int) (width/2),
+                (int) (height/2),src.getType());
+
+        Graphics2D g2d = result.createGraphics();
+        g2d.drawImage(src, 0, 0, result.getWidth(), result.getHeight(), null);
+        g2d.dispose();
+        return result;
+    }
 
 }

@@ -25,15 +25,17 @@ public class App {
         }
 
         Bitmap bmp = new Bitmap(img);
-      BufferedImage bf = bmp.grayscale(img);
+      BufferedImage bf = bmp.resize(img);
 
       try{
-          f = new File("src/main/resources/Output.jpg");
+          f = new File("src/main/resources/Output2.jpg");
+          System.out.println("writing to output file");
           ImageIO.write(bf,"jpg",f);
       }
       catch (IOException e){
           System.out.println(e);
       }
+
 
     }
 }
