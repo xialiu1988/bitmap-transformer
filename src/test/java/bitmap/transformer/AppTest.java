@@ -4,11 +4,34 @@
 package bitmap.transformer;
 
 import org.junit.Test;
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
 import static org.junit.Assert.*;
 
 public class AppTest {
     @Test public void testAppHasAGreeting() {
-        App classUnderTest = new App();
-        assertNotNull("app should have a greeting", classUnderTest.getGreeting());
+        BufferedImage img = null;
+        File f = null;
+        //read image
+        try{
+            f = new File("src/main/resources/test.jpg");
+            img = ImageIO.read(f);
+        }catch (IOException e){
+            System.out.println(e);
+        }
+        Bitmap bmp = new Bitmap(img);
+        BufferedImage bf = bmp.grayscale(img);
+        try{
+            f = new File("src/main/resources/Output1.jpg");
+            ImageIO.write(bf,"jpg",f);
+        }
+        catch (IOException e){
+            System.out.println(e);
+        }
+
     }
 }

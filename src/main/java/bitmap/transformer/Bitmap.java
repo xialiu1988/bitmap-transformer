@@ -20,37 +20,6 @@ public class Bitmap {
         this.m_components = new byte[width*height*4];
     }
 
-   //constructor passing the fileName
-    public Bitmap(String filePath) throws IOException {
-
-        int width = 0;
-        int height= 0;
-        byte[] components = null;
-
-        BufferedImage image = ImageIO.read(new File(filePath));
-        width = image.getWidth();
-        height = image.getHeight();
-
-        int imgPixel[] = new int[width*height];
-        image.getRGB(0,0,width,height,imgPixel,0,width);
-        components = new byte[width*height*4];
-
-        //loop throught the byte array
-        for(int i =0 ;i<width*height;i++){
-            int pix =  imgPixel[i];
-            components[i * 4]  = (byte)((pix>> 24) & 0xFF);
-            components[i * 4+1]  = (byte)((pix ) & 0xFF);
-            components[i * 4+2]  = (byte)((pix>> 8) & 0xFF);
-            components[i * 4+3]  = (byte)((pix>> 16) & 0xFF);
-
-        }
-
-        this.width = width;
-        this.height = height;
-        this.m_components = components;
-
-    }
-
 
     //transform: convert to grayscale
     public BufferedImage grayscale(BufferedImage image){
@@ -82,13 +51,13 @@ return image;
     public  BufferedImage resize(BufferedImage src) {
 
 
-        BufferedImage result = new BufferedImage((int) (width/2),
+        BufferedImage res = new BufferedImage((int) (width/2),
                 (int) (height/2),src.getType());
 
-        Graphics2D g2d = result.createGraphics();
-        g2d.drawImage(src, 0, 0, result.getWidth(), result.getHeight(), null);
-        g2d.dispose();
-        return result;
+        Graphics2D g = res.createGraphics();
+        g.drawImage(src, 0, 0, res.getWidth(), res.getHeight(), null);
+        g.dispose();
+        return res;
     }
 
 

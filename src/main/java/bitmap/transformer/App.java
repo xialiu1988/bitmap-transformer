@@ -25,7 +25,7 @@ public class App {
         }
 
         Bitmap bmp = new Bitmap(img);
-//        BufferedImage bf = bmp.grayscale(img);
+//      BufferedImage bf = bmp.grayscale(img);
 //      BufferedImage bf = bmp.resize(img);
         BufferedImage bf = bmp.blur(img);
       try{
