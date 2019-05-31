@@ -3,12 +3,37 @@
  */
 package bitmap.transformer;
 
-public class App {
-    public String getGreeting() {
-        return "Hello world.";
-    }
 
-    public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+public class App {
+
+    public static void main(String[] args)
+    {
+        BufferedImage img = null;
+        File f = null;
+
+        //read image
+        try{
+            f = new File("src/main/resources/test.jpg");
+            img = ImageIO.read(f);
+        }catch (IOException e){
+            System.out.println(e);
+        }
+
+        Bitmap bmp = new Bitmap(img);
+      BufferedImage bf = bmp.grayscale(img);
+
+      try{
+          f = new File("src/main/resources/Output.jpg");
+          ImageIO.write(bf,"jpg",f);
+      }
+      catch (IOException e){
+          System.out.println(e);
+      }
+
     }
 }
