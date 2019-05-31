@@ -25,11 +25,13 @@ public class App {
         }
 
         Bitmap bmp = new Bitmap(img);
-//      BufferedImage bf = bmp.grayscale(img);
-//      BufferedImage bf = bmp.resize(img);
-        BufferedImage bf = bmp.blur(img);
+//    BufferedImage bf = bmp.grayscale(img);
+//    BufferedImage bf = bmp.resize(img);
+//    BufferedImage bf = bmp.blur(img);
+        BufferedImage bf = bmp.rotateToRight90degree(img);
+
       try{
-          f = new File("src/main/resources/Output3.jpg");
+          f = new File("src/main/resources/Output_rotate.jpg");
           System.out.println("writing to output file");
           ImageIO.write(bf,"jpg",f);
       }
